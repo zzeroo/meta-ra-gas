@@ -1,0 +1,8 @@
+#
+# Hello-world systemd unit file
+#
+[Unit]
+Description="Hello, world"
+
+[Service]
+ExecStart=/usr/bin/hello &
