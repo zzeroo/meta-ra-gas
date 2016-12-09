@@ -28,6 +28,7 @@ revision: HEAD
 * [Git Repositories](#git-repositories)
 * [Konfiguration Layer](#konfiguration-layer)]
 * [Build Environment starten](#build-environment-starten)
+* [Lokale Konfiguration](#lokale-konfiguration)
 
 ## Git Repositories
 
@@ -61,4 +62,31 @@ vim conf/bblayers.conf
     /mnt/src/poky/meta-ra-gas \
     /mnt/src/poky/meta-rust-bin \
     "
+```
+
+## Lokale Konfiguration
+
+Nun muss noch die lokale Konfiguration ergänzt werden.
+
+```
+vim conf/local.conf
+```
+
+Wichtig ist die Maschine zu setzen. Alle RA-GAS Produkte basieren auf dem
+Lemaker Banana Pro Board.
+
+```
+MACHINE ??= "bananapro"
+```
+
+Die folgenden Enträge müssen ganz am Ende der Datei `conf/local.conf` eingetragen
+werden. Diese Zeilen sorgen dafür dass systemd als init System verwendet wird.
+
+```
+# Systemd on and exclusive
+DISTRO_FEATURES_append = " systemd"
+DISTRO_FEATURES_append = " wayland fbdev egl"
+VIRTUAL-RUNTIME_init_manager = "systemd"
+DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
+VIRTUAL-RUNTIME_initscripts = ""
 ```
