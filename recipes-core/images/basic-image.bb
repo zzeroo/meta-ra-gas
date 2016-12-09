@@ -11,3 +11,11 @@ IMAGE_INSTALL += " \
 	weston \
 	weston-init \
 	"
+
+# Hello World example
+IMAGE_INSTALL += " \
+	gtk+3 \
+	hello-world-gtk3-rs \
+	co-no2-kombisensor-mod-kalibrator \
+	co-no2-kombisensor-mod-kalibrator-init \
+"

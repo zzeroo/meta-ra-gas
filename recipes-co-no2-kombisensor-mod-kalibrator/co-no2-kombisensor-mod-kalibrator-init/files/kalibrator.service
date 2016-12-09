@@ -1,0 +1,19 @@
+#
+# Kalibrator systemd unit file
+#
+[Unit]
+Description="Kalibrator Software für die CO/NO2 Kombisensoren mit Modbus Interface"
+After=weston.service
+
+[Service]
+Environment=XDG_RUNTIME_DIR=/run/user/root
+Environment=LD_LIBRARY_PATH=/usr/lib
+Environment=GDK_BACKEND=wayland
+Environment=XMZ_HARDWARE=0.1.0
+Environment=LANG=de_DE.UTF-8
+ExecStart=/usr/bin/kalibrator
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
