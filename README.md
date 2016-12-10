@@ -10,6 +10,11 @@ URI: git://git.yoctoproject.org/poky
 branch: master
 revision: HEAD
 
+URI: git://git.openembedded.org/meta-openembedded
+sub folder: meta-oe
+branch: master
+revision: HEAD
+
 URI: git://github.com/zzeroo/meta-lemaker
 branch: master
 revision: HEAD
@@ -36,6 +41,7 @@ revision: HEAD
 git clone  git://git.yoctoproject.org/poky
 cd poky
 
+git clone git://git.openembedded.org/meta-openembedded
 git clone  git://github.com/zzeroo/meta-lemaker
 git clone  git://github.com/zzeroo/meta-ra-gas
 git clone git://github.com/rust-embedded/meta-rust-bin
