@@ -85,8 +85,9 @@ werden. Diese Zeilen sorgen dafür dass systemd als init System verwendet wird.
 ```
 # Systemd on and exclusive
 DISTRO_FEATURES_append = " systemd"
-DISTRO_FEATURES_append = " wayland fbdev egl"
 VIRTUAL-RUNTIME_init_manager = "systemd"
 DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
+
+DISTRO_FEATURES_append = " wayland fbdev egl"
 ```
