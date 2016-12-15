@@ -10,9 +10,8 @@ IMAGE_INSTALL += " \
 	weston-disable-mousepointer \
 "
 
-# Hello World example
 IMAGE_INSTALL += " \
 	gtk+3 \
-	xorg-fonts-100dpi \
+	packagegroup-fonts-truetype \
 	adwaita-icon-theme \
 "
