@@ -16,7 +16,7 @@
 # represented as "Unknown" below, you will need to check them yourself:
 #   tests/LICENSE
 #
-LICENSE = "LGPLv2.1 & Unknown"
+LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM = "file://COPYING.LESSER;md5=4fbd65380cdd255951079008b364516c \
                     file://tests/LICENSE;md5=9d793911062ac2215b80ebb5899aec14"
 
@@ -37,4 +37,3 @@ inherit autotools
 
 # Specify any options you want to pass to the configure script using EXTRA_OECONF:
 EXTRA_OECONF = ""
-
