@@ -6,14 +6,13 @@ Description="Kalibrator Software für die CO/NO2 Kombisensoren mit Modbus Interf
 After=weston.service
 
 [Service]
+Type=simple
 Environment=XDG_RUNTIME_DIR=/run/user/root
-Environment=LD_LIBRARY_PATH=/usr/lib
-Environment=GDK_BACKEND=wayland
 Environment=XMZ_HARDWARE=0.1.0
 Environment=LANG=de_DE.UTF-8
 ExecStart=/usr/bin/kalibrator
 Restart=always
-RestartSec=10
+RestartSec=10s
 
 [Install]
 WantedBy=multi-user.target
