@@ -10,10 +10,14 @@ IMAGE_INSTALL += " \
   dhcp-client \
 "
 
+IMAGE_INSTALL += " \
+  pkgmgr \
+"
+
 IMAGE_FEATURES += "ssh-server-openssh"
 IMAGE_FEATURES += "package-management"
 CORE_IMAGE_EXTRA_INSTALL += "apt"
 
-IMAGE_INSTALL += " \
+RDEPENDS_${PN} += " \
   cargo-bin \
 "

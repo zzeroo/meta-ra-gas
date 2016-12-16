@@ -15,3 +15,8 @@ IMAGE_INSTALL += " \
 	packagegroup-fonts-truetype \
 	adwaita-icon-theme \
 "
+
+IMAGE_INSTALL += " \
+	locale-base-de-de \
+	coreutils-locale-de \
+"
