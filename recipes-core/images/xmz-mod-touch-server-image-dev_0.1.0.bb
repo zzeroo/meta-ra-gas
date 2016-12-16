@@ -11,9 +11,9 @@ IMAGE_INSTALL += " \
 "
 
 IMAGE_FEATURES += "ssh-server-openssh"
+IMAGE_FEATURES += "package-management"
+CORE_IMAGE_EXTRA_INSTALL += "apt"
 
-
-RDEPENDS_${PN}-dev += " \
-  rust-bin \
+IMAGE_INSTALL += " \
   cargo-bin \
 "
