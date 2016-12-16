@@ -12,7 +12,7 @@ PR = "r3"
 
 S = "${WORKDIR}/git"
 
-# # Fix: No GNU_HASH in the elf binary
+# Fix: No GNU_HASH in the elf binary
 INSANE_SKIP_${PN} = "ldflags"
 INSANE_SKIP_${PN}-dev = "ldflags"
 
