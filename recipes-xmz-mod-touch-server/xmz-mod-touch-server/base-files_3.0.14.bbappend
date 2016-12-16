@@ -1,0 +1,1 @@
+hostname = "xmz-server-${MACHINE}"

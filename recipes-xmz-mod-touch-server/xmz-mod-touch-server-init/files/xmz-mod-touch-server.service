@@ -1,0 +1,13 @@
+#
+# xMZ-Mod-Touch-Server systemd unit file
+#
+[Unit]
+Description="Server Process der 'xMZ-Mod-Touch'-Platform"
+After=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/xmz_server
+
+[Install]
+Alias=xmz-server.service
+WantedBy=multi-user.target
