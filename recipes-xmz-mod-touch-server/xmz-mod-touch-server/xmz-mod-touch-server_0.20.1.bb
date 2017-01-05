@@ -6,9 +6,9 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.GPLv2;md5=751419260aa954499f7abaabaa882bbe"
 
 SRC_URI = "gitsm://github.com/Kliemann-Service-GmbH/xMZ-Mod-Touch-Server.git;branch=neustart;protocol=https"
-
-SRCREV = "7f42c5dc93df5d53529ccea389a7ebe618b000ea"
-PR = "r2"
+SRCREV = "${AUTOREV}"
+PV = "git-${SRCPV}"
+PR = "r0"
 
 S = "${WORKDIR}/git"
 
