@@ -6,7 +6,7 @@ Description="Server Process der 'xMZ-Mod-Touch'-Platform"
 After=multi-user.target
 
 [Service]
-ExecStart=/usr/bin/xmz_server
+ExecStart=/usr/bin/xmz-server
 
 [Install]
 Alias=xmz-server.service
