@@ -12,6 +12,13 @@ IMAGE_INSTALL += " \
   pkgmgr \
 "
 
+IMAGE_INSTALL += " \
+  vim \
+  git \
+  zsh tmux \
+  curl \
+"
+
 IMAGE_FEATURES += "ssh-server-openssh"
 IMAGE_FEATURES += "package-management"
-# CORE_IMAGE_EXTRA_INSTALL += "apt"
+CORE_IMAGE_EXTRA_INSTALL += "apt"

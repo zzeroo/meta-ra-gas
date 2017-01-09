@@ -8,7 +8,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.GPLv2;md5=751419260aa954499f
 SRC_URI = "gitsm://github.com/Kliemann-Service-GmbH/xMZ-Mod-Touch-Server.git;branch=master;protocol=https"
 SRCREV = "${AUTOREV}"
 PV = "git-${SRCPV}"
-PR = "r0"
+PR = "r8"
 
 S = "${WORKDIR}/git"
 
@@ -17,19 +17,24 @@ INSANE_SKIP_${PN} = "ldflags"
 INSANE_SKIP_${PN}-dev = "ldflags"
 
 DEPENDS = "gtk+3 libmodbus"
-RDEPENDS_${PN} += "gtk+3 libmodbus"
+RDEPENDS_${PN} += "gtk+3 libmodbus vim git curl"
 
 cargo_do_compile_append() {
-    export CC="${WRAPPER_DIR}/cc-wrapper.sh"
-    export PKG_CONFIG_ALLOW_CROSS="1"
-    bbnote "which rustc:" `which rustc`
-    bbnote "rustc --version" `rustc --version`
-    bbnote "which cargo:" `which cargo`
-    bbnote "cargo --version" `cargo --version`
-    bbnote cargo build ${CARGO_BUILD_FLAGS}
-    cargo build --example configuration_to_json ${CARGO_BUILD_FLAGS}
+  cargo build --example configuration_to_json ${CARGO_BUILD_FLAGS}
+  cargo build --example lampentest_led ${CARGO_BUILD_FLAGS}
+  cargo build --example lampentest_relais ${CARGO_BUILD_FLAGS}
+  cargo build --example lampentest_random_led ${CARGO_BUILD_FLAGS}
+  cargo build --example lampentest_random_relais ${CARGO_BUILD_FLAGS}
 }
 
-# do_install_append() {
-#   install -Dm 0755 ${WORKDIR}/target/production/examples/configuration_to_json ${D}/usr/local/bin/
-# }
+do_install_append() {
+  install -Dm 0755 ${WORKDIR}/target/arm-unknown-linux-gnueabihf/release/examples/configuration_to_json ${D}/usr/local/bin/configuration_to_json
+  install -Dm 0755 ${WORKDIR}/target/arm-unknown-linux-gnueabihf/release/examples/lampentest_led ${D}/usr/local/bin/lampentest_led
+  install -Dm 0755 ${WORKDIR}/target/arm-unknown-linux-gnueabihf/release/examples/lampentest_relais ${D}/usr/local/bin/lampentest_relais
+  install -Dm 0755 ${WORKDIR}/target/arm-unknown-linux-gnueabihf/release/examples/lampentest_random_led ${D}/usr/local/bin/lampentest_random_led
+  install -Dm 0755 ${WORKDIR}/target/arm-unknown-linux-gnueabihf/release/examples/lampentest_random_relais ${D}/usr/local/bin/lampentest_random_relais
+}
+
+FILES_${PN} += " \
+  /usr/local/bin/ \
+  "
