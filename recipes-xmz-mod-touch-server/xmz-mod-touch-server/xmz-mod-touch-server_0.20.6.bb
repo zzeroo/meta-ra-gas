@@ -4,11 +4,15 @@ SUMMARY = "Serverteil der 'xMZ-Mod-Touch'-Platform"
 HOMEPAGE = "https://github.com/Kliemann-Service-GmbH/xMZ-Mod-Touch-Server"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.GPLv2;md5=751419260aa954499f7abaabaa882bbe"
-
-SRC_URI = "gitsm://github.com/Kliemann-Service-GmbH/xMZ-Mod-Touch-Server.git;branch=master;protocol=https"
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+SRC_URI = " \
+  gitsm://github.com/Kliemann-Service-GmbH/xMZ-Mod-Touch-Server.git;branch=master;protocol=https \
+  file://boot.mount \
+  file://xmz-mod-touch-configuration.service \
+"
 SRCREV = "${AUTOREV}"
 PV = "git-${SRCPV}"
-PR = "r3"
+PR = "r4"
 
 S = "${WORKDIR}/git"
 
@@ -16,8 +20,9 @@ S = "${WORKDIR}/git"
 INSANE_SKIP_${PN} = "ldflags"
 INSANE_SKIP_${PN}-dev = "ldflags"
 
-DEPENDS = "gtk+3 libmodbus"
+DEPENDS = "gtk+3 libmodbus xmz-mod-touch-server-image"
 RDEPENDS_${PN} += "gtk+3 libmodbus vim git curl"
+RDEPENDS_${PN} += "xmz-mod-touch-server-init"
 
 cargo_do_compile_append() {
   for f in ${S}/examples/*.rs; do
@@ -26,14 +31,23 @@ cargo_do_compile_append() {
 }
 
 do_install_append() {
+  install -Dm0644 ${S}/share/xMZ-Mod-Touch.json.production ${D}/usr/share/xmz-mod-touch-server/xMZ-Mod-Touch.json.production
+  # Install examples
   for f in ${WORKDIR}/target/arm-unknown-linux-gnueabihf/release/examples/*; do
     if [ -f "$f" ] && [ -x "$f" ]; then
       install -m 0755 "$f" "${D}${bindir}"
       bbnote "file installed: $f"
     fi
   done
+
+  # Systemd Unit file config checker
+  install -Dm0644 ${WORKDIR}/boot.mount ${D}${systemd_system_unitdir}/boot.mount
+  install -Dm0644 ${WORKDIR}/xmz-mod-touch-configuration.service ${D}${systemd_system_unitdir}/xmz-mod-touch-configuration.service
 }
+
+inherit systemd
 
 FILES_${PN} += " \
   /usr/local/bin/ \
+  /lib/systemd/system/ \
   "

@@ -3,6 +3,7 @@
 #
 [Unit]
 Description="Server Process der 'xMZ-Mod-Touch'-Platform"
+After=xmz-mod-touch-configuration.service
 After=multi-user.target
 
 [Service]

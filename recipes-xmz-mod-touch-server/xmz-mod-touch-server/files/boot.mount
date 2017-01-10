@@ -1,0 +1,15 @@
+[Unit]
+Description = 1. Partition nach /boot
+DefaultDependencies=no
+Conflicts=umount.target
+Before=umount.target
+StopWhenUnneeded=true
+
+[Mount]
+What=/dev/mmcblk0p1
+Where=/boot
+Type=vfat
+Options=defaults
+
+[Install]
+WantedBy = multi-user.target
