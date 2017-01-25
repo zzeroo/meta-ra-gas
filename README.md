@@ -5,6 +5,14 @@ OpenEmbedded/ Yocto Layer mit den Programmen der RA-GAS GmbH sowie deren Abhäng
 
 Folgende Abhängigkeiten müssen erfüllt sein.
 
+/mnt/src/poky/meta \
+/mnt/src/poky/meta-poky \
+/mnt/src/poky/meta-openembedded/meta-oe \
+/mnt/src/poky/meta-yocto-bsp \
+/mnt/src/poky/meta-lemaker \
+/mnt/src/poky/meta-ra-gas \
+/mnt/src/poky/meta-rust-bin
+
 ```
 URI: git://git.yoctoproject.org/poky
 branch: master

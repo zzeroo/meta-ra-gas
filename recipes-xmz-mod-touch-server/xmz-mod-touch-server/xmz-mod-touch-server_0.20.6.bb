@@ -8,11 +8,9 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRC_URI = " \
   gitsm://github.com/Kliemann-Service-GmbH/xMZ-Mod-Touch-Server.git;branch=master;protocol=https \
   file://boot.mount \
-  file://xmz-mod-touch-configuration.service \
 "
 SRCREV = "${AUTOREV}"
 PV = "git-${SRCPV}"
-PR = "r4"
 
 S = "${WORKDIR}/git"
 
@@ -22,6 +20,7 @@ INSANE_SKIP_${PN}-dev = "ldflags"
 
 DEPENDS = "gtk+3 libmodbus xmz-mod-touch-server-image"
 RDEPENDS_${PN} += "gtk+3 libmodbus vim git curl"
+RDEPENDS_${PN} += "xmz-mod-touch-configuration"
 RDEPENDS_${PN} += "xmz-mod-touch-server-init"
 
 cargo_do_compile_append() {
@@ -30,6 +29,7 @@ cargo_do_compile_append() {
   done
 }
 
+# Kopiert die xMZ-Mod-Touch.json Konfigurationsdatei Vorlage nach /usr/share
 do_install_append() {
   install -Dm0644 ${S}/share/xMZ-Mod-Touch.json.production ${D}/usr/share/xmz-mod-touch-server/xMZ-Mod-Touch.json.production
   # Install examples
@@ -42,12 +42,8 @@ do_install_append() {
 
   # Systemd Unit file config checker
   install -Dm0644 ${WORKDIR}/boot.mount ${D}${systemd_system_unitdir}/boot.mount
-  install -Dm0644 ${WORKDIR}/xmz-mod-touch-configuration.service ${D}${systemd_system_unitdir}/xmz-mod-touch-configuration.service
 }
-
-inherit systemd
 
 FILES_${PN} += " \
   /usr/local/bin/ \
-  /lib/systemd/system/ \
-  "
+"
