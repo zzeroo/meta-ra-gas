@@ -1,4 +1,3 @@
-
 SUMMARY = "xMZ-Mod-Touch-Server systemd unit"
 HOMEPAGE = "https://github.com/Kliemann-Service-GmbH/xMZ-Mod-Touch-Server"
 LICENSE = "GPLv2"
@@ -16,5 +15,6 @@ do_install() {
 inherit systemd
 
 RDEPENDS_${PN} = "xmz-mod-touch-server"
+RDEPENDS_${PN} = "xmz-mod-touch-server-configuration"
 
 SYSTEMD_SERVICE_${PN} = "xmz-mod-touch-server.service"

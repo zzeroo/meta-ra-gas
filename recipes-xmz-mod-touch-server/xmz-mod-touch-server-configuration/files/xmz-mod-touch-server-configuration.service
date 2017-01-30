@@ -1,8 +1,7 @@
 #
 # xMZ-Mod-Touch-Server Configuration managment
 #
-# This unit checks if the configuration file exists. If not it copies
-# a template in.
+# This unit checks if the configuration file exists. If not copy a template into.
 # On new Systems there is no configuration. This script primary targets this.
 #
 [Unit]
@@ -14,5 +13,7 @@ After = boot.mount
 [Service]
 ExecStart=/bin/cp /usr/share/xmz-mod-touch-server/xMZ-Mod-Touch.json.production /boot/xMZ-Mod-Touch.json
 ExecStartPost=/bin/systemctl stop boot.mount
-Type=oneshot
-RemainAfterExit=yes
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

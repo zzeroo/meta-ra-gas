@@ -7,7 +7,6 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.GPLv2;md5=751419260aa954499f
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRC_URI = " \
   gitsm://github.com/Kliemann-Service-GmbH/xMZ-Mod-Touch-Server.git;branch=master;protocol=https \
-  file://boot.mount \
 "
 SRCREV = "${AUTOREV}"
 PV = "git-${SRCPV}"
@@ -20,8 +19,8 @@ INSANE_SKIP_${PN}-dev = "ldflags"
 
 DEPENDS = "gtk+3 libmodbus xmz-mod-touch-server-image"
 RDEPENDS_${PN} += "gtk+3 libmodbus vim git curl"
-RDEPENDS_${PN} += "xmz-mod-touch-configuration"
-RDEPENDS_${PN} += "xmz-mod-touch-server-init"
+RDEPENDS_${PN} = "xmz-mod-touch-configuration"
+RDEPENDS_${PN} = "xmz-mod-touch-server-init"
 
 cargo_do_compile_append() {
   for f in ${S}/examples/*.rs; do
@@ -39,9 +38,6 @@ do_install_append() {
       bbnote "file installed: $f"
     fi
   done
-
-  # Systemd Unit file config checker
-  install -Dm0644 ${WORKDIR}/boot.mount ${D}${systemd_system_unitdir}/boot.mount
 }
 
 FILES_${PN} += " \

@@ -1,4 +1,5 @@
-include xmz-mod-touch-server-image_0.1.0.bb
+include xmz-mod-touch-server-image_0.1.1.bb
+
 # WLAN Tools and firmware
 IMAGE_INSTALL += " \
   wireless-tools \
@@ -19,10 +20,10 @@ IMAGE_INSTALL += " \
   zsh tmux \
   curl \
 "
-
-IMAGE_INSTALL += " \
-     rustup-init \
-"
+#
+# IMAGE_INSTALL += " \
+#      rustup-init \
+# "
 
 IMAGE_INSTALL += " \
      e2fsprogs-resize2fs \
