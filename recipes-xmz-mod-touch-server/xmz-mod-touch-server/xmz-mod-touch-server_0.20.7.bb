@@ -10,27 +10,32 @@ SRC_URI = " \
 "
 SRCREV = "${AUTOREV}"
 PV = "git-${SRCPV}"
-
 S = "${WORKDIR}/git"
+
+PR = "r0"
 
 # Fix: No GNU_HASH in the elf binary
 INSANE_SKIP_${PN} = "ldflags"
 INSANE_SKIP_${PN}-dev = "ldflags"
 
 DEPENDS = "gtk+3 libmodbus xmz-mod-touch-server-image"
-RDEPENDS_${PN} += "gtk+3 libmodbus vim git curl"
-RDEPENDS_${PN} = "xmz-mod-touch-configuration"
-RDEPENDS_${PN} = "xmz-mod-touch-server-init"
+RDEPENDS_${PN} = "xmz-mod-touch-server-configuration"
+RDEPENDS_${PN} += "xmz-mod-touch-server-init"
+RDEPENDS_${PN} += "xmz-mod-touch-gui"
 
+# Examples sollen auch alle mit in das Image eingebunden werden.
+# FIXME: In PRODUCTION deaktiviere
 cargo_do_compile_append() {
   for f in ${S}/examples/*.rs; do
     cargo build --example $(basename -s.rs $f) ${CARGO_BUILD_FLAGS}
   done
 }
 
+# Konfiguraton Managment
 # Kopiert die xMZ-Mod-Touch.json Konfigurationsdatei Vorlage nach /usr/share
 do_install_append() {
   install -Dm0644 ${S}/share/xMZ-Mod-Touch.json.production ${D}/usr/share/xmz-mod-touch-server/xMZ-Mod-Touch.json.production
+
   # Install examples
   for f in ${WORKDIR}/target/arm-unknown-linux-gnueabihf/release/examples/*; do
     if [ -f "$f" ] && [ -x "$f" ]; then

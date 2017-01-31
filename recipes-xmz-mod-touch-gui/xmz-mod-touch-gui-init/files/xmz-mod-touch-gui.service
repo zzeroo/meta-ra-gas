@@ -1,0 +1,18 @@
+#
+# xMZ-Mod-Touch-GUI systemd unit file
+#
+[Unit]
+Description="Grafische Oberfläche der 'xMZ-Mod-Touch'-Platform"
+After=weston.service
+
+[Service]
+Type=simple
+Environment=XDG_RUNTIME_DIR=/run/user/root
+Environment=XMZ_HARDWARE=0.1.0
+Environment=LANG=de_DE.UTF-8
+ExecStart=/usr/bin/xmz_mod_touch_gui
+Restart=always
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target

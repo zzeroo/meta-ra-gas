@@ -1,4 +1,4 @@
-include xmz-mod-touch-server-image_0.1.1.bb
+include co-no2-kalibrator-image_0.1.0.bb
 
 # WLAN Tools and firmware
 IMAGE_INSTALL += " \
