@@ -9,10 +9,10 @@ SRC_URI = " \
   gitsm://github.com/Kliemann-Service-GmbH/xMZ-Mod-Touch-Server.git;branch=master;protocol=https \
 "
 SRCREV = "${AUTOREV}"
-PV = "git-${SRCPV}"
+# PV = "git-${SRCPV}"
 S = "${WORKDIR}/git"
 
-PR = "r0"
+PR = "r1"
 
 # Fix: No GNU_HASH in the elf binary
 INSANE_SKIP_${PN} = "ldflags"
@@ -21,7 +21,7 @@ INSANE_SKIP_${PN}-dev = "ldflags"
 DEPENDS = "gtk+3 libmodbus xmz-mod-touch-server-image"
 RDEPENDS_${PN} = "xmz-mod-touch-server-configuration"
 RDEPENDS_${PN} += "xmz-mod-touch-server-init"
-RDEPENDS_${PN} += "xmz-mod-touch-gui"
+
 
 # Examples sollen auch alle mit in das Image eingebunden werden.
 # FIXME: In PRODUCTION deaktiviere

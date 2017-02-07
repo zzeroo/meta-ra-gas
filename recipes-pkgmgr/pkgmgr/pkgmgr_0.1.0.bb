@@ -6,8 +6,9 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRC_URI = " \
   file://base-feeds.conf \
   "
-
 S = "${WORKDIR}"
+
+PR = "r1"
 
 do_install() {
 	install -Dm0644 ${WORKDIR}/base-feeds.conf ${D}${sysconfdir}/opkg/base-feeds.conf

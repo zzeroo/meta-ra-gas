@@ -1,5 +1,7 @@
 include xmz-mod-touch-server-image_0.1.1.bb
 
+PR = "r2"
+
 # WLAN Tools and firmware
 IMAGE_INSTALL += " \
   wireless-tools \

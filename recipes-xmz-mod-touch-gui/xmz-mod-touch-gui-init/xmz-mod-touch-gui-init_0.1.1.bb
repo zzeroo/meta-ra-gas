@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.GPLv2;md5=751419260aa954499f
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRC_URI = "file://xmz-mod-touch-gui.service"
-PR = "r1"
+PR = "r0"
 S = "${WORKDIR}"
 
 do_install() {
