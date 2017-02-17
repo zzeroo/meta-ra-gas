@@ -12,7 +12,7 @@ SRCREV = "${AUTOREV}"
 # PV = "git-${SRCPV}"
 S = "${WORKDIR}/git"
 
-PR = "r1"
+PR = "r20"
 
 # Fix: No GNU_HASH in the elf binary
 INSANE_SKIP_${PN} = "ldflags"
