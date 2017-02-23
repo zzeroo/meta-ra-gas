@@ -11,24 +11,28 @@ SRC_URI = " \
 SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git"
 
-PR = "r0"
+PR = "r19"
 
-DEPENDS = "gtk+3"
+# Fix: No GNU_HASH in the elf binary
+INSANE_SKIP_${PN} = "ldflags"
+INSANE_SKIP_${PN}-dev = "ldflags"
+
+DEPENDS = "gtk+3 libmodbus"
 
 
-# Include the examples into the image
-cargo_do_compile_append() {
-  for f in ${S}/examples/*.rs; do
-    cargo build --example $(basename -s.rs $f) ${CARGO_BUILD_FLAGS}
-  done
-}
-
-# Install examples
-do_install_append() {
-  for f in ${WORKDIR}/target/arm-unknown-linux-gnueabihf/release/examples/*; do
-    if [ -f "$f" ] && [ -x "$f" ]; then
-      install -m 0755 "$f" "${D}${bindir}"
-      bbnote "file installed: $f"
-    fi
-  done
-}
+# # Include the examples into the image
+# cargo_do_compile_append() {
+#   for f in ${S}/examples/*.rs; do
+#     cargo build --example $(basename -s.rs $f) ${CARGO_BUILD_FLAGS}
+#   done
+# }
+#
+# # Install examples
+# do_install_append() {
+#   for f in ${WORKDIR}/target/arm-unknown-linux-gnueabihf/release/examples/*; do
+#     if [ -f "$f" ] && [ -x "$f" ]; then
+#       install -m 0755 "$f" "${D}${bindir}"
+#       bbnote "file installed: $f"
+#     fi
+#   done
+# }

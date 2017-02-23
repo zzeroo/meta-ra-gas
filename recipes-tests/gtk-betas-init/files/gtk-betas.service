@@ -1,0 +1,15 @@
+[Unit]
+Description="gtk-betas systemd unit file"
+After=weston.service
+
+[Service]
+Type=simple
+Environment=XDG_RUNTIME_DIR=/run/user/root
+Environment=XMZ_HARDWARE=0.1.0
+Environment=LANG=de_DE.UTF-8
+ExecStart=/usr/bin/gtk-betas
+Restart=always
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
