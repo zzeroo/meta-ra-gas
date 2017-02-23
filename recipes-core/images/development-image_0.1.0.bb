@@ -19,7 +19,8 @@ IMAGE_INSTALL += " \
 IMAGE_INSTALL += " \
   vim \
   git \
-  zsh tmux \
+  tmux \
+  zsh \
   curl \
 "
 
@@ -33,7 +34,7 @@ IMAGE_FEATURES += "ssh-server-openssh"
 IMAGE_FEATURES += "package-management"
 
 #IMAGE_FEATURES += "dbg-pkgs dev-pkgs ptest-pkgs tools-sdk tools-debug eclipse-debug tools-profile tools-testapps"
-IMAGE_FEATURES += "tools-debug tools-profile tools-testapps"
+IMAGE_FEATURES += "tools-sdk tools-debug tools-profile tools-testapps"
 
 
 
