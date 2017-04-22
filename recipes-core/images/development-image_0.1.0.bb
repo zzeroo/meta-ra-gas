@@ -1,11 +1,12 @@
 include basic-image.bb
 
-PR = "r1"
+PR = "r2"
 
 # WLAN Tools and firmware
 IMAGE_INSTALL += " \
   wireless-tools \
   wpa-supplicant \
+  wlan-config \
   ethtool \
   linux-firmware \
   broadcom-firmware \
@@ -34,7 +35,8 @@ IMAGE_FEATURES += "ssh-server-openssh"
 IMAGE_FEATURES += "package-management"
 
 #IMAGE_FEATURES += "dbg-pkgs dev-pkgs ptest-pkgs tools-sdk tools-debug eclipse-debug tools-profile tools-testapps"
-IMAGE_FEATURES += "tools-sdk tools-debug tools-profile tools-testapps"
+#IMAGE_FEATURES += "tools-sdk tools-debug tools-profile tools-testapps" # slang compelliert nicht auf arch linux 03.03.2017
+IMAGE_FEATURES += "tools-debug"
 
 
 

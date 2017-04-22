@@ -5,14 +5,13 @@ HOMEPAGE = "https://github.com/zzeroo/xMZ-Mod-Touch-GUI.git"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.GPLv2;md5=751419260aa954499f7abaabaa882bbe"
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
-
 SRC_URI = " \
-  gitsm://github.com/zzeroo/xMZ-Mod-Touch-GUI.git;branch=development;protocol=https \
+  gitsm://github.com/zzeroo/xMZ-Mod-Touch-GUI.git;branch=master;protocol=https \
 "
 SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git"
 
-PR = "r4"
+PR = "r3"
 
 # Fix: No GNU_HASH in the elf binary
 INSANE_SKIP_${PN} = "ldflags"
