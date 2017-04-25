@@ -4,11 +4,11 @@
 [Unit]
 Description="Server Process der 'xMZ-Mod-Touch'-Platform"
 After=xmz-mod-touch-configuration.service
-After=multi-user.target
+#After=multi-user.target
 
 [Service]
-ExecStart=/usr/bin/xmz-server
+ExecStart=/usr/bin/xmz_mod_touch_server
 
 [Install]
 Alias=xmz-server.service
-WantedBy=multi-user.target
+#WantedBy=multi-user.target

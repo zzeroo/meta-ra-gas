@@ -11,7 +11,7 @@ SRC_URI = " \
 SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git"
 
-PR = "r3"
+PR = "r5"
 
 # Fix: No GNU_HASH in the elf binary
 INSANE_SKIP_${PN} = "ldflags"
