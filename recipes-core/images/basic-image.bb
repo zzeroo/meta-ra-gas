@@ -13,7 +13,6 @@ IMAGE_INSTALL += " \
 
 IMAGE_INSTALL += " \
 	gtk+3 \
-	packagegroup-fonts-truetype \
 	adwaita-icon-theme \
 "
 
