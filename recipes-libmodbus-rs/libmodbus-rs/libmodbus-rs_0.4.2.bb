@@ -10,8 +10,10 @@ SRC_URI = " \
 "
 SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git"
+PR = "r3"
 
-PR = "r8"
+PV = "1.0+git${SRCPV}"
+
 
 # Fix: No GNU_HASH in the elf binary
 INSANE_SKIP_${PN} = "ldflags"
@@ -20,14 +22,19 @@ INSANE_SKIP_${PN}-dev = "ldflags"
 DEPENDS = "libmodbus"
 RDEPENDS_${PN} += "libmodbus"
 
-# # BUG: error: failed to run custom build command for `libloading v0.4.0`
-# #   process didn't exit successfully: `/var/src/poky/build/tmp/work/armv7ahf-neon-vfpv4-poky-linux-gnueabi/libmodbus-rs/0.4.0-r1/target/release/build/libloading-34688c369e161e93/build-script-build` (exit code: 252) --- stderr
-# #   Building for an unknown target_os=`Err(NotPresent)`!
-# export CARGO_CFG_TARGET_OS = "linux"
+# Examples sollen auch alle mit in das Image eingebunden werden.
+cargo_do_compile_append() {
+  for f in ${S}/examples/*.rs; do
+    cargo build --example $(basename -s.rs $f) ${CARGO_BUILD_FLAGS}
+  done
+}
 
-
-do_install() {
-  # disable do_install() task, because we only want to test the building.
-  # A colon `:` stands for `true`.
-  :
+# Install examples
+do_install_append() {
+  for f in ${WORKDIR}/target/arm-unknown-linux-gnueabihf/release/examples/*; do
+    if [ -f "$f" ] && [ -x "$f" ]; then
+      install -m 0755 "$f" "${D}${bindir}"
+      bbnote "file installed: $f"
+    fi
+  done
 }

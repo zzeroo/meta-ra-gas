@@ -8,7 +8,7 @@ SRC_URI += " \
 	file://boot.mount \
 	file://xmz-mod-touch-server-configuration.service \
 "
-PR = "r1"
+PR = "r2"
 S = "${WORKDIR}"
 FILES_${PN} += "/lib/"
 
