@@ -10,9 +10,9 @@ SRC_URI = " \
 "
 SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git"
-PR = "r3"
 
-PV = "1.0+git${SRCPV}"
+PR = "r9"
+
 
 
 # Fix: No GNU_HASH in the elf binary
@@ -30,11 +30,18 @@ cargo_do_compile_append() {
 }
 
 # Install examples
-do_install_append() {
+cargo_do_install_append() {
+  target/arm-unknown-linux-gnueabihf/release/examples/
   for f in ${WORKDIR}/target/arm-unknown-linux-gnueabihf/release/examples/*; do
     if [ -f "$f" ] && [ -x "$f" ]; then
-      install -m 0755 "$f" "${D}${bindir}"
+      install -Dm 0755 "$f" "${D}${bindir}"
+      FILES_${PN} += "${bindir}${f}"
       bbnote "file installed: $f"
     fi
   done
+}
+
+# Leere `do_install()` Funktion, weil libmodbus-rs keine Programme buildet (keine main.rs hat)
+do_install() {
+  :
 }

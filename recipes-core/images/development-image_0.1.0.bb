@@ -1,6 +1,6 @@
 include basic-image.bb
 
-PR = "r2"
+PR = "r3"
 
 # WLAN Tools and firmware
 IMAGE_INSTALL += " \
@@ -15,15 +15,15 @@ IMAGE_INSTALL += " \
 IMAGE_INSTALL += " \
   pkgmgr \
 "
-# # Custom tools
-# # TODO: Packetgroup?
-# IMAGE_INSTALL += " \
-#   vim \
-#   git \
-#   tmux \
-#   zsh \
-#   curl \
-# "
+# Custom tools
+# TODO: Packetgroup?
+IMAGE_INSTALL += " \
+  vim \
+  git \
+  tmux \
+  zsh \
+  curl \
+"
 
 IMAGE_INSTALL += " \
      e2fsprogs-resize2fs \
