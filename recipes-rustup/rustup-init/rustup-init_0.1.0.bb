@@ -9,13 +9,14 @@ SRC_URI = " \
   gitsm://github.com/rust-lang-nursery/rustup.rs.git;branch=master;protocol=https \
 "
 SRCREV = "${AUTOREV}"
-PV = "git-${SRCPV}"
-
 S = "${WORKDIR}/git"
+
+PR = "0"
+
 
 # Fix: No GNU_HASH in the elf binary
 INSANE_SKIP_${PN} = "ldflags"
 INSANE_SKIP_${PN}-dev = "ldflags"
 
-# DEPENDS = ""
+DEPENDS = "openssl"
 # RDEPENDS_${PN} += ""
