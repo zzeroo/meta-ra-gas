@@ -11,4 +11,4 @@ ExecStart=/usr/bin/xmz_mod_touch_server
 
 [Install]
 Alias=xmz-server.service
-#WantedBy=multi-user.target
+WantedBy=multi-user.target

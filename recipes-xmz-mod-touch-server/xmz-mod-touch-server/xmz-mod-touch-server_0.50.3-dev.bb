@@ -11,7 +11,7 @@ SRC_URI = " \
 SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git"
 
-PR = "r2"
+PR = "r6"
 
 # Fix: No GNU_HASH in the elf binary
 INSANE_SKIP_${PN} = "ldflags"
@@ -30,11 +30,9 @@ cargo_do_compile_append() {
 
 # Install examples
 cargo_do_install_append() {
-  target/arm-unknown-linux-gnueabihf/release/examples/
-  for f in ${WORKDIR}/target/arm-unknown-linux-gnueabihf/release/examples/*; do
+  for f in ${WORKDIR}/target/armv7-unknown-linux-gnueabihf/release/examples/*; do
     if [ -f "$f" ] && [ -x "$f" ]; then
       install -Dm 0755 "$f" "${D}${bindir}"
-      FILES_${PN} += "${bindir}${f}"
       bbnote "file installed: $f"
     fi
   done
@@ -46,12 +44,3 @@ do_install_append() {
   install -Dm0644 ${S}/share/xMZ-Mod-Touch.json.development ${D}/usr/share/xmz-mod-touch-server/xMZ-Mod-Touch.json.development
   install -Dm0644 ${S}/share/xMZ-Mod-Touch.json.production ${D}/usr/share/xmz-mod-touch-server/xMZ-Mod-Touch.json.production
 }
-
-do_install() {
-  :
-}
-
-# FIXME: kann das weg?
-FILES_${PN} += " \
-  /usr/local/bin/ \
-"
