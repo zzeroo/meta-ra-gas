@@ -1,6 +1,12 @@
 include basic-image.bb
 
-PR = "r3"
+PR = "r4"
+
+# Auto resize root filesystem on first boot
+IMAGE_INSTALL += "resize-rootfs"
+
+#Rust support (indirect, you have to call `rustup-init --default-toolchain nightly -y` on the target)
+IMAGE_INSTAL += "rustup-init"
 
 # WLAN Tools and firmware
 IMAGE_INSTALL += " \
