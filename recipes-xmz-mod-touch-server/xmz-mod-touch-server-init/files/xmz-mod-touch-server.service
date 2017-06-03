@@ -4,8 +4,9 @@
 #
 [Unit]
 Description="Server Process der 'xMZ-Mod-Touch'-Platform"
-Requires = boot.mount
-After = boot.mount
+Requires=boot.mount
+After=boot.mount
+Requires=xmz-mod-touch-server-configuration.service
 After=xmz-mod-touch-server-configuration.service
 
 [Service]

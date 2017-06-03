@@ -9,15 +9,15 @@
 # eine Default Konfigurationsdatei nach /boot.
 #
 [Unit]
-Description = "Prüft ob eine Konfigurationsdatei für den 'xMZ-Mod-Touch-Server' existiert"
-ConditionPathExists = !/boot/xMZ-Mod-Touch.json
-Requires = boot.mount
-After = boot.mount
+Description="Prüft ob eine Konfigurationsdatei für den 'xMZ-Mod-Touch-Server' existiert"
+ConditionPathExists=!/boot/xMZ-Mod-Touch.json
+Requires=boot.mount
+After=boot.mount
 
 [Service]
-ExecStart = /bin/cp /usr/share/xmz-mod-touch-server/xMZ-Mod-Touch.json.production /boot/xMZ-Mod-Touch.json
-ExecStartPost = /bin/systemctl stop boot.mount
-Type = simple
+ExecStart=/bin/cp /usr/share/xmz-mod-touch-server/xMZ-Mod-Touch.json.production /boot/xMZ-Mod-Touch.json
+ExecStartPost=/bin/systemctl stop boot.mount
+Type=simple
 
 [Install]
-WantedBy = multi-user.target
+WantedBy=multi-user.target

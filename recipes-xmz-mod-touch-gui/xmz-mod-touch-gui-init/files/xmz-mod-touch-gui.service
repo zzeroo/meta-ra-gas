@@ -6,6 +6,7 @@
 [Unit]
 Description="Grafische Oberfläche der 'xMZ-Mod-Touch'-Platform"
 After=weston.service
+Requires=xmz-mod-touch-server.service
 After=xmz-mod-touch-server.service
 
 [Service]

@@ -3,17 +3,17 @@
 # xMZ-Mod-Touch-Server systemd unit file
 #
 [Unit]
-Description = "Mounted die 1ste mmcblk0 Partition nach /boot"
-DefaultDependencies = no
-Conflicts = umount.target
-Before = umount.target
-StopWhenUnneeded = true
+Description="Mounted die 1. Partition der mmcblk0 Disk nach /boot"
+DefaultDependencies=no
+Conflicts=umount.target
+Before=umount.target
+StopWhenUnneeded=true
 
 [Mount]
-What = /dev/mmcblk0p1
-Where = /boot
-Type = vfat
-Options = defaults
+What=/dev/mmcblk0p1
+Where=/boot
+Type=vfat
+Options=defaults
 
 [Install]
-WantedBy = multi-user.target
+WantedBy=multi-user.target
