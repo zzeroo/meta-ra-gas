@@ -1,5 +1,9 @@
+# xmz-mod-touch-server.service
+#
+# xMZ-Mod-Touch-Server systemd unit file
+#
 [Unit]
-Description = "mountes 1st. sdcard partition to /boot"
+Description = "Mounted die 1ste mmcblk0 Partition nach /boot"
 DefaultDependencies = no
 Conflicts = umount.target
 Before = umount.target

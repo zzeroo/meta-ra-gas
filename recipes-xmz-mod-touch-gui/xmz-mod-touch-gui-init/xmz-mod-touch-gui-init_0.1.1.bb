@@ -5,8 +5,9 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.GPLv2;md5=751419260aa954499f
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRC_URI = "file://xmz-mod-touch-gui.service"
-PR = "r1"
 S = "${WORKDIR}"
+
+PR = "r4"
 
 do_install() {
 	install -Dm0644 ${WORKDIR}/xmz-mod-touch-gui.service ${D}${systemd_system_unitdir}/xmz-mod-touch-gui.service

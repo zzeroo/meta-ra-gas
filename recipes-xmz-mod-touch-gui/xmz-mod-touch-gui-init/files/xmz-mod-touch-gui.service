@@ -1,5 +1,7 @@
+# xmz-mod-touch-gui.service
 #
-# xMZ-Mod-Touch-GUI systemd unit file
+# xMZ-Mod-Touch-GUI systemd unit file. Startet die Grafische Benutzer
+# Oberfläche der 'xMZ-Mod-Touch'-Platform
 #
 [Unit]
 Description="Grafische Oberfläche der 'xMZ-Mod-Touch'-Platform"
@@ -11,7 +13,7 @@ Type=simple
 Environment=XDG_RUNTIME_DIR=/run/user/root
 Environment=XMZ_HARDWARE=0.1.0
 Environment=LANG=de_DE.UTF-8
-ExecStart=/usr/bin/xmz_mod_touch_gui
+ExecStart=/usr/bin/xmz-mod-touch-gui
 Restart=always
 RestartSec=10s
 

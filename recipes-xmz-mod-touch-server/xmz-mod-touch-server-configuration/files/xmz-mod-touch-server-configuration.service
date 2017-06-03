@@ -1,13 +1,16 @@
+# xmz-mod-touch-server-configuration.service
 #
-# xMZ-Mod-Touch-Server Configuration managment
+# xMZ-Mod-Touch-Server Configuration managment.
 #
-# This unit checks if the configuration file exists. If there is no config file
-# copy a template into.
-# On new Systems there is no configuration. This script primary targets this.
+# Dieses Unit File prüft ob eine Konfigurationsdatei für die
+# 'xMZ-Mod-Touch'-Platform im Verzeichnis /boot/ existiert.
+#
+# Sollte keine Konfigurationsdatei vorhanden sein, dann kopiert die Unit
+# eine Default Konfigurationsdatei nach /boot.
 #
 [Unit]
-Description = "checks if the configuration file for the 'xMZ-Mod-Touch-Server' exists"
-ConditionPathExists = |!/boot/xMZ-Mod-Touch.json
+Description = "Prüft ob eine Konfigurationsdatei für den 'xMZ-Mod-Touch-Server' existiert"
+ConditionPathExists = !/boot/xMZ-Mod-Touch.json
 Requires = boot.mount
 After = boot.mount
 

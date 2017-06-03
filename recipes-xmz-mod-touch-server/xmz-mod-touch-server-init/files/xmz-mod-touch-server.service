@@ -1,13 +1,15 @@
+# xmz-mod-touch-server.service
 #
-# xMZ-Mod-Touch-Server systemd unit file
+# xMZ-Mod-Touch-Server systemd unit file. Startet den Server Teil.
 #
 [Unit]
 Description="Server Process der 'xMZ-Mod-Touch'-Platform"
-After=xmz-mod-touch-configuration.service
-#After=multi-user.target
+Requires = boot.mount
+After = boot.mount
+After=xmz-mod-touch-server-configuration.service
 
 [Service]
-ExecStart=/usr/bin/xmz_mod_touch_server
+ExecStart=/usr/bin/xmz-mod-touch-server
 
 [Install]
 Alias=xmz-server.service

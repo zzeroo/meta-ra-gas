@@ -7,7 +7,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRC_URI = "file://xmz-mod-touch-server.service"
 S = "${WORKDIR}"
 
-PR = "r2"
+PR = "r4"
 
 do_install() {
 	install -Dm0644 ${WORKDIR}/xmz-mod-touch-server.service ${D}${systemd_system_unitdir}/xmz-mod-touch-server.service
