@@ -1,12 +1,12 @@
 include basic-image.bb
 
-PR = "r10"
+PR = "r11"
 
 # Auto resize root filesystem on first boot
 IMAGE_INSTALL += "resize-rootfs"
 
 #Rust support (indirect, you have to call `rustup-init --default-toolchain nightly -y` on the target)
-IMAGE_INSTAL += "rustup-init"
+IMAGE_INSTALL += "rustup-init"
 #
 # IMAGE_INSTALL += "autoconf automake binutils binutils-symlinks cpp cpp-symlinks \
 #   gcc gcc-symlinks g++ g++-symlinks gettext make libstdc++ libstdc++-dev file coreutils \

@@ -2,6 +2,8 @@
 #include recipes-core/images/core-image-minimal.bb
 include recipes-core/images/core-image-base.bb
 
+PR = "r2"
+
 # Include modules in rootfs
 IMAGE_INSTALL += " \
 	kernel-modules \

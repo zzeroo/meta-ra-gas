@@ -11,6 +11,7 @@
 [Unit]
 Description="Prüft ob eine Konfigurationsdatei für den 'xMZ-Mod-Touch-Server' existiert"
 ConditionPathExists=!/boot/xMZ-Mod-Touch.json
+Conflicts=umount.target
 Requires=boot.mount
 After=boot.mount
 
